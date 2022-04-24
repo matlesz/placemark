@@ -1,0 +1,25 @@
+{
+  "tracks": [
+    {
+      "title": "Piano Sonata No. 3",
+      "artist": "Beethoven",
+      "duration": 5,
+      "_id": "6205536e-65ce-4bb3-ad92-e81abdc53849",
+      "playlistid": "df11a3d4-0644-42ee-a38e-853ef2a860b1"
+    },
+    {
+      "title": "Piano Sonata No. 7",
+      "artist": "Beethoven",
+      "duration": 6,
+      "_id": "27d82592-e583-463a-9894-e61940a31a5f",
+      "playlistid": "df11a3d4-0644-42ee-a38e-853ef2a860b1"
+    },
+    {
+      "title": "Piano Sonata No. 10",
+      "artist": "Beethoven",
+      "duration": 4,
+      "_id": "bf698cb4-10cc-47ce-905b-2e1642a76876",
+      "playlistid": "df11a3d4-0644-42ee-a38e-853ef2a860b1"
+    }
+  ]
+}
