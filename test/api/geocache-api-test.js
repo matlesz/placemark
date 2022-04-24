@@ -9,11 +9,12 @@ suite("Geocache API tests", () => {
 
   setup(async () => {
     geocacheService.clearAuth();
-    user = geocacheService.createUser(maggie);
-    await geocacheService.authenticate(maggieCredentials)
+    user = await geocacheService.createUser(maggie);
+    await geocacheService.authenticate(maggieCredentials);
+    await geocacheService.deleteAllLocations();
     await geocacheService.deleteAllGeocaches();
     await geocacheService.deleteAllUsers();
-    user = geocacheService.createUser(maggie);
+    user = await geocacheService.createUser(maggie);
     await geocacheService.authenticate(maggieCredentials)
     county.userid=user._id;
   });

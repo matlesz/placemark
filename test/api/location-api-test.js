@@ -6,7 +6,7 @@ import { maggie,maggieCredentials, locationArea, testLocations, county } from ".
 
 suite("Location API tests", () => {
   let user = null;
-  let stationModel = null;
+  let geocacheModel = null;
 
   setup(async () => {
     geocacheService.clearAuth();
@@ -24,14 +24,14 @@ suite("Location API tests", () => {
   teardown(async () => {});
 
   test("Create Location", async () => {
-    const returnedLocation = await geocacheService.createLocation(stationModel._id, locationArea);
+    const returnedLocation = await geocacheService.createLocation(geocacheModel._id, locationArea);
     assertSubset(locationArea, returnedLocation);
   });
 
   test("Create Multiple Locations", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await geocacheService.createLocation(stationModel._id, testLocations[i]);
+      await geocacheService.createLocation(geocacheModel._id, testLocations[i]);
     }
     const returnedLocations = await geocacheService.getAllLocations();
     assert.equal(returnedLocations.length, testLocations.length);
@@ -45,7 +45,7 @@ suite("Location API tests", () => {
   test("Delete LocationApi", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await geocacheService.createLocation(stationModel._id, testLocations[i]);
+      await geocacheService.createLocation(geocacheModel._id, testLocations[i]);
     }
     let returnedLocations = await geocacheService.getAllLocations();
     assert.equal(returnedLocations.length, testLocations.length);
@@ -57,15 +57,15 @@ suite("Location API tests", () => {
     assert.equal(returnedLocations.length, 0);
   });
 
-  test("Denormalised Station", async () => {
+  test("Denormalised Geocache", async () => {
     for (let i = 0; i < testLocations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await geocacheService.createLocation(stationModel._id, testLocations[i]);
+      await geocacheService.createLocation(geocacheModel._id, testLocations[i]);
     }
-    const returnedStation = await geocacheService.getStation(stationModel._id);
-    assert.equal(returnedStation.locations.length, testLocations.length);
+    const returnedGeocache = await geocacheService.getGeocache(geocacheModel._id);
+    assert.equal(returnedGeocache.locations.length, testLocations.length);
     for (let i = 0; i < testLocations.length; i += 1) {
-      assertSubset(testLocations[i], returnedStation.locations[i]);
+      assertSubset(testLocations[i], returnedGeocache.locations[i]);
     }
   });
 });

@@ -1,6 +1,7 @@
 import Joi from "joi";
 
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
+
 export const UserCredentialsSpec = Joi.object()
     .keys({
         email: Joi.string().email().example("homer@simpson.com").required(),
@@ -11,7 +12,7 @@ export const UserCredentialsSpec = Joi.object()
 export const UserSpec = UserCredentialsSpec.keys({
     firstName: Joi.string().example("Homer").required(),
     lastName: Joi.string().example("Simpson").required(),
-    role:Joi.string().example("admin").optional(),
+   // role:Joi.string().example("admin").optional(),
 }).label("UserDetails");
 
 export const UserSpecPlus = UserSpec.keys({
@@ -28,7 +29,7 @@ export const LocationSpec = Joi.object()
         longitude: Joi.number().example(18).required(),
         category:Joi.string().example("Traditional").required(),
         size: Joi.string().example("Micro").required(),
-
+        geocacheid: IdSpec,
     })
     .label("Location");
 
@@ -36,6 +37,7 @@ export const LocationSpecPlus = LocationSpec.keys({
     _id: IdSpec,
     __v: Joi.number(),
 }).label("LocationPlus");
+
 export const LocationArraySpec = Joi.array().items(LocationSpecPlus).label("LocationArray");
 
 export const GeocacheSpec = Joi.object()

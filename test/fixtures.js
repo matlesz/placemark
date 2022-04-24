@@ -7,7 +7,6 @@ export const maggie = {
   password: "secret",
 };
 
-
 export const maggieCredentials = {
   email: "maggie@simpson.com",
   password: "secret",
@@ -32,7 +31,7 @@ export const testUsers = [
     lastName: "Simpson",
     email: "bart@simpson.com",
     password: "secret",
-  },
+  }
 ];
 
 
@@ -73,21 +72,21 @@ export const testLocations = [
     "latitude": 7,
     "longitude": 5,
     "category": "Wherigo",
-    "size":"Micro",
+    "size":"Micro"
   },
   {
     "name": "Old Cementary",
     "latitude": 10,
     "longitude": 6,
     "category": "Traditional",
-    "size":"Small",
+    "size":"Small"
   },
   {
     "name": "First of them All",
     "latitude": 20,
     "longitude": 4,
     "category": "EarthCache",
-    "size":"Large",
+    "size":"Large"
   }
 ];
 

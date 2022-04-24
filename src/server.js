@@ -90,7 +90,7 @@ async function init() {
     isCached: false,
   });
 
-// mongo must be added here and also inititated in .env
+// mongo must be added here and also initiated in .env
   db.init("mongo")
   server.route(webRoutes);
   server.route(apiRoutes)

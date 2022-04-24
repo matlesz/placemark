@@ -39,7 +39,7 @@ suite("User API tests", () => {
     assert.equal(returnedUsers.length, 3);
     await geocacheService.deleteAllUsers();
     await geocacheService.createUser(maggie);
-    await  geocacheService.authenticate(maggieCredentials);
+    await geocacheService.authenticate(maggieCredentials);
     returnedUsers = await geocacheService.getAllUsers();
     assert.equal(returnedUsers.length, 0);
   });
