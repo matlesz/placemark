@@ -1,70 +1,64 @@
 import { assert } from "chai";
+import { geocacheService } from "./geocache-service.js";
 import { assertSubset } from "../test-utils.js";
-import { playtimeService } from "./playtime-service.js";
-import { maggie, maggieCredentials, mozart, testPlaylists, testTracks, concerto} from "../fixtures.js";
+import {maggie, maggieCredentials, county,testStations} from "../fixtures.js"
 
-suite("Track API tests", () => {
-  let user = null;
-  let beethovenSonatas = null;
+suite("Station API tests", () => {
+
+  let user=null;
 
   setup(async () => {
-    playtimeService.clearAuth();
-    user = await playtimeService.createUser(maggie);
-    await playtimeService.authenticate(maggieCredentials);
-    await playtimeService.deleteAllPlaylists();
-    await playtimeService.deleteAllTracks();
-    await playtimeService.deleteAllUsers();
-    user = await playtimeService.createUser(maggie);
-    await playtimeService.authenticate(maggieCredentials);
-    mozart.userid = user._id;
-    beethovenSonatas = await playtimeService.createPlaylist(mozart);
+    geocacheService.clearAuth();
+    user = geocacheService.createUser(maggie);
+    await geocacheService.authenticate(maggieCredentials)
+    await geocacheService.deleteAllStations();
+    await geocacheService.deleteAllUsers();
+    user = geocacheService.createUser(maggie);
+    await geocacheService.authenticate(maggieCredentials)
+    county.userid=user._id;
   });
 
   teardown(async () => {});
 
-  test("create track", async () => {
-    const returnedTrack = await playtimeService.createTrack(beethovenSonatas._id, concerto);
-    assertSubset(concerto, returnedTrack);
+  test("create station", async () => {
+    const returnedStation = await geocacheService.createStation(county);
+    assert.isNotNull(returnedStation);
+    assertSubset(county,returnedStation);
+
   });
 
-  test("create Multiple tracks", async () => {
-    for (let i = 0; i < testTracks.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      await playtimeService.createTrack(beethovenSonatas._id, testTracks[i]);
-    }
-    const returnedTracks = await playtimeService.getAllTracks();
-    assert.equal(returnedTracks.length, testTracks.length);
-    for (let i = 0; i < returnedTracks.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      const track = await playtimeService.getTrack(returnedTracks[i]._id);
-      assertSubset(track, returnedTracks[i]);
+  test("delete a station", async () => {
+    const station = await geocacheService.createStation(county);
+    const response = await geocacheService.deleteStation(station._id);
+    assert.equal(response.status, 204);
+    try {
+      const returnedStation = await geocacheService.getStation(station.id);
+      assert.fail("Should not return a response");
+    } catch (error) {
+      assert(error.response.data.message === "No station with this id", "Incorrect Response Message");  // test will fail if you put Station instead of station in this string
     }
   });
 
-  test("Delete TrackApi", async () => {
-    for (let i = 0; i < testTracks.length; i += 1) {
+
+  test("create multiple stations", async () => {
+    for (let i = 0; i < testStations.length; i += 1) {
+      testStations[i].userid = user._id;
       // eslint-disable-next-line no-await-in-loop
-      await playtimeService.createTrack(beethovenSonatas._id, testTracks[i]);
+      await geocacheService.createStation(testStations[i]);
     }
-    let returnedTracks = await playtimeService.getAllTracks();
-    assert.equal(returnedTracks.length, testTracks.length);
-    for (let i = 0; i < returnedTracks.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      const track = await playtimeService.deleteTrack(returnedTracks[i]._id);
-    }
-    returnedTracks = await playtimeService.getAllTracks();
-    assert.equal(returnedTracks.length, 0);
+    let returnedLists = await geocacheService.getAllStations();
+    assert.equal(returnedLists.length, testStations.length);
+    await geocacheService.deleteAllStations();
+    returnedLists = await geocacheService.getAllStations();
+    assert.equal(returnedLists.length, 0);
   });
 
-  test("denormalised playlist", async () => {
-    for (let i = 0; i < testTracks.length; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      await playtimeService.createTrack(beethovenSonatas._id, testTracks[i]);
-    }
-    const returnedPlaylist = await playtimeService.getPlaylist(beethovenSonatas._id);
-    assert.equal(returnedPlaylist.tracks.length, testTracks.length);
-    for (let i = 0; i < testTracks.length; i += 1) {
-      assertSubset(testTracks[i], returnedPlaylist.tracks[i]);
+  test("remove non-existant station", async () => {
+    try {
+      const response = await geocacheService.deleteStation("not an id");
+      assert.fail("Should not return a response");
+    } catch (error) {
+      assert(error.response.data.message === "No station with this id", "Incorrect Response Message");
     }
   });
 });

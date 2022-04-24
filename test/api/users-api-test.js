@@ -1,50 +1,68 @@
 import { assert } from "chai";
+
 import { assertSubset } from "../test-utils.js";
-import { playtimeService } from "./playtime-service.js";
-import { maggie, maggieCredentials, testUsers } from "../fixtures.js";
-import { db } from "../../src/models/db.js";
+import { maggie,testUsers,maggieCredentials } from "../fixtures.js";
+import { geocacheService } from "./geocache-service.js";
+
 
 const users = new Array(testUsers.length);
 
+
 suite("User API tests", () => {
+
   setup(async () => {
-    playtimeService.clearAuth();
-    await playtimeService.createUser(maggie);
-    await playtimeService.authenticate(maggieCredentials);
-    await playtimeService.deleteAllUsers();
+    geocacheService.clearAuth();
+    await geocacheService.createUser(maggie);
+    await geocacheService.authenticate(maggieCredentials);
+    await geocacheService.deleteAllUsers();
     for (let i = 0; i < testUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      users[0] = await playtimeService.createUser(testUsers[i]);
+      users[0] = await geocacheService.createUser(testUsers[i]);
     }
-    await playtimeService.createUser(maggie);
-    await playtimeService.authenticate(maggieCredentials);
+    await geocacheService.createUser(maggie);
+    await geocacheService.authenticate(maggieCredentials);
   });
-  teardown(async () => {});
+
+  teardown(async () => {
+  });
 
   test("create a user", async () => {
-    const newUser = await playtimeService.createUser(maggie);
-    assertSubset(maggie, newUser);
+    const newUser= await geocacheService.createUser(maggie);
+    assertSubset(maggie,newUser);
     assert.isDefined(newUser._id);
   });
 
-  test("delete all user", async () => {
-    let returnedUsers = await playtimeService.getAllUsers();
-    assert.equal(returnedUsers.length, 4);
-    await playtimeService.deleteAllUsers();
-    await playtimeService.createUser(maggie);
-    await playtimeService.authenticate(maggieCredentials);
-    returnedUsers = await playtimeService.getAllUsers();
-    assert.equal(returnedUsers.length, 1);
+
+  test("delete all userApi", async () => {
+
+    let returnedUsers = await geocacheService.getAllUsers();
+    assert.equal(returnedUsers.length, 3);
+    await geocacheService.deleteAllUsers();
+    await geocacheService.createUser(maggie);
+    await  geocacheService.authenticate(maggieCredentials);
+    returnedUsers = await geocacheService.getAllUsers();
+    assert.equal(returnedUsers.length, 0);
   });
 
-  test("get a user", async () => {
-    const returnedUser = await playtimeService.getUser(users[0]._id);
+  test("get a user - success", async () => {
+    const returnedUser = await geocacheService.getUser(users[0]._id);
     assert.deepEqual(users[0], returnedUser);
+  });
+
+  test("get a user - fail", async () => {
+    try {
+      const returnedUser = await geocacheService.getUser("1234");
+      assert.fail("Should not return a response");
+    }
+    catch(error){
+      assert(error.response.data.message === "No User with this id");
+    }
+
   });
 
   test("get a user - bad id", async () => {
     try {
-      const returnedUser = await playtimeService.getUser("1234");
+      const returnedUser = await geocacheService.getUser("1234");
       assert.fail("Should not return a response");
     } catch (error) {
       assert(error.response.data.message === "No User with this id");
@@ -53,15 +71,18 @@ suite("User API tests", () => {
   });
 
   test("get a user - deleted user", async () => {
-    await playtimeService.deleteAllUsers();
-    await playtimeService.createUser(maggie);
-    await playtimeService.authenticate(maggieCredentials);
+
+    await geocacheService.deleteAllUsers();
+    await geocacheService.createUser(maggie);
+    await geocacheService.authenticate(maggieCredentials);
     try {
-      const returnedUser = await playtimeService.getUser(users[0]._id);
+      const returnedUser = await geocacheService.getUser(users[0]._id);
       assert.fail("Should not return a response");
     } catch (error) {
       assert(error.response.data.message === "No User with this id");
       assert.equal(error.response.data.statusCode, 404);
     }
   });
+
+
 });

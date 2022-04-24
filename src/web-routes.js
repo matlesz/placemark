@@ -20,7 +20,7 @@ export const webRoutes = [
 
 
   { method: "GET", path: "/admin-access", config: adminController.index},
-  { method: "GET", path: "/admin-acess/deleteUser/{id}", config: adminController.deleteUser },
+  { method: "GET", path: "/admin-access/deleteUser/{id}", config: adminController.deleteUser },
 
 
   { method: "GET", path: "/dashboard", config: dashboardController.index },
@@ -34,7 +34,7 @@ export const webRoutes = [
   { method: "GET", path: "/geocache/{id}/location/{locationid}", config: locationController.showLocationView },
   { method: "POST", path: "/geocache/{id}/location/{locationid}", config: locationController.update },
 
-    
+
   // to handle images in public folder..uses npm inert plugin
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 

@@ -1,10 +1,10 @@
 <form class="box" action="/geocache/{{geocache._id}}/addLocation" method="POST">
-  <label>Location Name</label>
+  <label>Geocache</label>
   <div class="field is-horizontal">
     <div class="field-body">
 
       <div class="field">
-        <input class="input" type="text" placeholder="Enter area name" name="name">
+        <input class="input" type="text" placeholder="Geocache Name" name="name">
       </div>
 
       <div class="field">
@@ -16,24 +16,31 @@
       </div>
       <div class="field">
        <div class="select" >
-         <select name="category" >
-           <option></option>
-           <option value="Type 1 Plug">Type 1 5pin connector</option>
-          <option value="Type 2 Plug">Type 2 7pin connector</option>
-          <option value="Combination Plug">CCS/Combination Plug/Rapid Charging</option>
-          <option value="CHAdeMO plug">CHAdeMO Plug</option>
-          <option value="Type 2 Plug">Type 2 7pin connector</option>
-          <option value="Domestic Socket">Domestic Socket 3pin connector</option>
-          <option value="CEE Plug">CEE Plug/Camping connector</option>
-          <option value="Tesla Supercharger">Tesla Supercharger</option>
-
+         <select name="category">
+            <option value="Traditional">Traditional</option>
+            <option value="Multi-Cache">Multi-Cache</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Event">Event</option>
+            <option value="Locationless">Locationless</option>
+            <option value="Letterbox">Letterbox</option>
+            <option value="Wherigo">Wherigo</option>
+            <option value="Webcam">Webcam</option>
+            <option value="Virtual">Virtual</option>
+            <option value="EarthCache">EarthCache</option>
          </select>
        </div>
       </div>
       <div class="field">
-          <textarea class="textarea is-input has-fixed-size" placeholder="Eg: Shopping Mall, Parking Lot, Fuel Geocache,On Street" type="text" maxlength="200" pattern="[A-Za-z\\s]+{1,20}" name="description"></textarea>
+        <div class="select" >
+          <select name="size" >
+            <option value="Micro">Micro</option>
+            <option value="Small">Small</option>
+            <option value="Regular">Regular</option>
+            <option value="Large">Large</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
       </div>
-
     </div>
   </div>
   <button class="button is-primary">Add Location</button>
