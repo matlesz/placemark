@@ -1,13 +1,13 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    {{> playtime-brand}}
+    {{> placemark-brand}}
   </div>
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button" id="login" href="/login"> Log in </a>
-          <a class="button" id="signup" href="/signup"> Sign up </a>
+          <a class="button is-medium" id="login" href="/login"> Log in </a> <a class="button is-medium" id="signup" href="/signup"> Sign
+          up </a>
         </div>
       </div>
     </div>
@@ -15,5 +15,5 @@
 </nav>
 
 <script>
-
+  document.getElementById("{{active}}").classList.add("is-warning");
 </script>

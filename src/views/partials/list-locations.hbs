@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each station.locations}}
+    {{#each geocache.locations}}
       <tr>
         <td>
           {{name}}
@@ -27,12 +27,12 @@
           {{description}}
         </td>
           <td>
-          <a href="/station/{{../station._id}}/location/{{_id}}" class="ui icon button">
+          <a href="/geocache/{{../geocache._id}}/location/{{_id}}" class="ui icon button">
             <i class="fas fa-pen"></i>
             </a>
         </td>
          <td>
-          <a href="/station/{{../station._id}}/deleteLocation/{{_id}}" class="ui icon button">
+          <a href="/geocache/{{../geocache._id}}/deleteLocation/{{_id}}" class="ui icon button">
             <i class="fas fa-trash"></i>
           </a>
         </td>
