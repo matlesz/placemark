@@ -1,43 +1,44 @@
-import { PlaylistSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { GeocacheSpec } from "../models/joi-schemas.js";
 
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const playlists = await db.playlistStore.getUserPlaylists(loggedInUser._id);
+      const geocaches = await db.geocacheStore.getUserGeocaches(loggedInUser._id);
       const viewData = {
-        title: "Playtime Dashboard",
-        user: loggedInUser,
-        playlists: playlists,
+        name: "geocache Dashboard",
+        geocaches: geocaches,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
-  addPlaylist: {
+  addGeocache: {
     validate: {
-      payload: PlaylistSpec,
+      payload: GeocacheSpec,
       options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Add Playlist error", errors: error.details }).takeover().code(400);
+      failAction: async function (request, h, error) {
+        const loggedInUser = request.auth.credentials;
+        const geocaches = await db.geocacheStore.getUserGeocaches(loggedInUser._id);
+        return h.view("dashboard-view", { title: "Add Geocache error",geocaches:geocaches, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const newPlayList = {
+      const newGeocache = {
         userid: loggedInUser._id,
-        title: request.payload.title,
+        name: request.payload.name,
       };
-      await db.playlistStore.addPlaylist(newPlayList);
+      await db.geocacheStore.addGeocache(newGeocache);
       return h.redirect("/dashboard");
     },
   },
 
-  deletePlaylist: {
+  deleteGeocache: {
     handler: async function (request, h) {
-      const playlist = await db.playlistStore.getPlaylistById(request.params.id);
-      await db.playlistStore.deletePlaylistById(playlist._id);
+      const geocache = await db.geocacheStore.getGeocacheById(request.params.id);
+      await db.geocacheStore.deleteGeocacheById(geocache._id);
       return h.redirect("/dashboard");
     },
   },
