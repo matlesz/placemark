@@ -8,6 +8,10 @@ const userSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
+  role:{
+    type:String,
+    default:"regular"
+  }
 });
 
 export const User = Mongoose.model("User", userSchema);

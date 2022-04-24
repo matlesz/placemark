@@ -5,8 +5,8 @@ import { userJsonStore } from "./json/user-json-store.js";
 import { playlistJsonStore } from "./json/location-json-store.js";
 import { trackJsonStore } from "./json/geocache-json-store.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
-import { playlistMongoStore } from "./mongo/playlist-mongo-store.js";
-import { trackMongoStore } from "./mongo/track-mongo-store.js";
+import { locationMongoStore } from "./mongo/location-mongo-store.js";
+import { trackMongoStore } from "./mongo/geocache-mongo-store.js";
 import { connectMongo } from "./mongo/connect.js";
 
 export const db = {
@@ -23,7 +23,7 @@ export const db = {
         break;
       case "mongo" :
         this.userStore = userMongoStore;
-        this.playlistStore = playlistMongoStore;
+        this.playlistStore = locationMongoStore;
         this.trackStore = trackMongoStore;
         connectMongo();
         break;
