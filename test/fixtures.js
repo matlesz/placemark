@@ -1,79 +1,95 @@
-export const serviceUrl = "http://localhost:3000";
 
+// test for sign up form
 export const maggie = {
   firstName: "Maggie",
   lastName: "Simpson",
   email: "maggie@simpson.com",
-  password: "secret"
+  password: "secret",
 };
+
 
 export const maggieCredentials = {
   email: "maggie@simpson.com",
-  password: "secret"
+  password: "secret",
 };
 
+// array of users
 export const testUsers = [
   {
     firstName: "Homer",
     lastName: "Simpson",
     email: "homer@simpson.com",
-    password: "secret"
+    password: "secret",
   },
   {
     firstName: "Marge",
     lastName: "Simpson",
     email: "marge@simpson.com",
-    password: "secret"
+    password: "secret",
   },
   {
     firstName: "Bart",
     lastName: "Simpson",
     email: "bart@simpson.com",
-    password: "secret"
+    password: "secret",
+  },
+];
+
+
+// test for stations
+export const county = {
+  name: "Cork"
+};
+
+export const testGeocaches = [
+  {
+    name: "Dublin"
+  },
+  {
+    name: "Cavan"
+  },
+  {
+    name: "Wexford"
   }
 ];
 
-export const mozart = {
-  title: "Mozart Favourites"
+export const countyName = {
+  name: "Dublin"
 };
 
-export const concerto = {
-  "title": "Violin Concerto No. 3",
-  "artist": "Mozart",
-  "duration": 15
+export const locationArea = {
+  "name": "Moai",
+  "latitude": 30,
+  "longitude": 15,
+  "category": "Traditional",
+  "size":"Small",
 };
 
 
-export const beethoven = {
-  title: "Mozart Favourites"
-};
 
-export const testPlaylists = [
+export const testLocations = [
   {
-    title: "Beethoven Sonatas"
+    "name": "Loong Avenue",
+    "latitude": 7,
+    "longitude": 5,
+    "category": "Wherigo",
+    "size":"Micro",
   },
   {
-    title: "Beethoven Concertos"
+    "name": "Old Cementary",
+    "latitude": 10,
+    "longitude": 6,
+    "category": "Traditional",
+    "size":"Small",
   },
   {
-    title: "Beethoven Symphonies"
+    "name": "First of them All",
+    "latitude": 20,
+    "longitude": 4,
+    "category": "EarthCache",
+    "size":"Large",
   }
 ];
 
-export const testTracks = [
-  {
-    "title": "Piano Sonata No. 3",
-    "artist": "Beethoven",
-    "duration": 5
-  },
-  {
-    "title": "Piano Sonata No. 7",
-    "artist": "Beethoven",
-    "duration": 6
-  },
-  {
-    "title": "Piano Sonata No. 10",
-    "artist": "Beethoven",
-    "duration": 4
-  }
-];
+
+export const serviceUrl = "http://localhost:3000";
