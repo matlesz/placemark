@@ -1,6 +1,6 @@
 import { userMemStore } from "./mem/user-mem-store.js";
-import { playlistMemStore } from "./mem/playlist-mem-store.js";
-import { trackMemStore } from "./mem/track-mem-store.js";
+import { playlistMemStore } from "./mem/location-mem-store.js";
+import { trackMemStore } from "./mem/geocache-mem-store.js";
 import { userJsonStore } from "./json/user-json-store.js";
 import { playlistJsonStore } from "./json/location-json-store.js";
 import { trackJsonStore } from "./json/geocache-json-store.js";
