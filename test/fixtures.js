@@ -36,7 +36,7 @@ export const testUsers = [
 ];
 
 
-// test for stations
+// test for geocaches
 export const county = {
   name: "Cork"
 };

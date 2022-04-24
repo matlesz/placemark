@@ -12,13 +12,13 @@ suite("Location API tests", () => {
     geocacheService.clearAuth();
     user = await geocacheService.createUser(maggie);
     await geocacheService.authenticate(maggieCredentials)
-    await geocacheService.deleteAllStations();
+    await geocacheService.deleteAllGeocaches();
     await geocacheService.deleteAllLocations();
     await geocacheService.deleteAllUsers();
     user = await geocacheService.createUser(maggie);
     await geocacheService.authenticate(maggieCredentials)
     county.userid = user._id;
-    stationModel = await geocacheService.createStation(county);
+    geocacheModel = await geocacheService.createGeocache(county);
   });
 
   teardown(async () => {});

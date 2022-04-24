@@ -5,7 +5,7 @@ import { maggie,maggieCredentials } from "../fixtures.js";
 
 suite("Authentication API tests", async () => {
   setup(async () => {
-    GeocacheService.clearAuth();
+    geocacheService.clearAuth();
     await geocacheService.createUser(maggie);
     await geocacheService.authenticate(maggieCredentials);
     await geocacheService.deleteAllUsers();

@@ -1,10 +1,6 @@
 /* eslint-disable dot-notation */
 import axios from "axios";
-
-
 import { serviceUrl } from "../fixtures.js";
-
-
 
 
 export const geocacheService={
@@ -43,10 +39,6 @@ export const geocacheService={
     return res.data;
   },
 
-
-
-
-
   async createGeocache(geocache) {
     const res = await axios.post(`${this.geocacheUrl}/api/geocaches`, geocache);
     return res.data;
@@ -71,11 +63,6 @@ export const geocacheService={
     const res = await axios.get(`${this.geocacheUrl}/api/geocaches/${id}`);
     return res.data;
   },
-
-
-
-
-
 
   async getAllLocations() {
     const res = await axios.get(`${this.geocacheUrl}/api/locations`);
@@ -110,6 +97,4 @@ export const geocacheService={
     const res = await axios.delete(`${this.geocacheUrl}/api/locations`);
     return res.data;
   },
-
-
 };

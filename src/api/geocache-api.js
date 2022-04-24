@@ -10,7 +10,7 @@ export const geocacheApi = {
     },    handler: async function (request, h) {
       try {
         const geocaches = await db.geocacheStore.getAllGeocaches();
-        return geochaches;
+        return geocaches;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
