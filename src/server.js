@@ -30,7 +30,7 @@ async function init() {
 
   const swaggerOptions={
     info:{
-      title: "Geocache logger API",
+      title: "Placemark API",
       version:"0.1"
     },
     securityDefinitions: {
