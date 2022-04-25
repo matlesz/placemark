@@ -15,7 +15,7 @@ import { apiRoutes } from "./api-routes.js";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 
-const result= dotenv.config({silent: true});
+const result = dotenv.config();
 if (result.error){
   console.log(result.error.message);
 }
