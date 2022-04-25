@@ -1,4 +1,4 @@
-# Playtime Changelog
+# Placemark Changelog
 
 ## [0.10.0]
 
@@ -54,7 +54,7 @@
 ## [0.4.2]
 
 - JSON based text fixtures
-- encapsulate playtime service access in tests
+- encapsulate placemark service access in tests
 
 ## [0.4.1]
 
