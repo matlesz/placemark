@@ -1,6 +1,6 @@
 # Placemark Changelog
 
-## [0.10.0]
+## [1.0.0]
 
 - Introduce a mongo database seeding feature
 - Adapt swagger documentation to accomodated JWT Authenticate
