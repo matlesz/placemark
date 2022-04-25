@@ -38,8 +38,8 @@ suite("Geocache Model tests", () => {
   test("delete One Geocache - success", async () => {
     const id = testGeocaches[0]._id;
     await db.geocacheStore.deleteGeocacheById(id);
-    const returnedPlaylists = await db.geocacheStore.getAllGeocaches();
-    assertSubset(returnedPlaylists.length, testGeocaches.length - 1);
+    const returnedGeocaches = await db.geocacheStore.getAllGeocaches();
+    assertSubset(returnedGeocaches.length, testGeocaches.length - 1);
     const deletedGeocache = await db.geocacheStore.getGeocacheById(id);
     assert.isNull(deletedGeocache);
   });

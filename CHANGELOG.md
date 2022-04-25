@@ -27,7 +27,7 @@
 
 ## [0.4.8]
 
-- return trackApi with playlist requests (denormalised)
+- return trackApi with geocache requests (denormalised)
 
 ## [0.4.7]
 
@@ -45,7 +45,7 @@
 ## [0.4.4]
 
 - complete user test
-- first playlist tests
+- first geocache tests
 
 ## [0.4.3]
 
@@ -82,12 +82,12 @@
 ## [0.2.2]
 
 - centralise Joi schemas in singe module
-- seed starter user + playlist
+- seed starter user + geocache
 
 ## [0.2.1]
 
 - joi validation for login
-- joi validation for add playlist
+- joi validation for add geocache
 - joi validation for add song
 
 ## [0.2.0]
@@ -96,21 +96,21 @@
 
 ## [0.1.5]
 
-- allow playlists to be deleted
+- allow geocaches to be deleted
 - support edit and delete trackApi
 
 ## [0.1.4]
 
-- support for adding trackApi to playlist
+- support for adding trackApi to geocache
 
 ## [0.1.3]
 
-- support delete playlist
-- support open playlist in new view
+- support delete geocache
+- support open geocache in new view
 
 ## [0.1.2]
 
-- first playlist model + view components
+- first geocache model + view components
 
 ## [0.1.1]
 

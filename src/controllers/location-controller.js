@@ -5,11 +5,11 @@ import { db } from "../models/db.js";
 export const locationController = {
   index: {
     handler: async function (request, h) {
-      const station = await db.stationStore.getStationById(request.params.id);
+      const geocache = await db.geocacheStore.getGeocacheById(request.params.id);
       const location = await db.locationStore.getLocationById(request.params.locationid);
       const viewData = {
         title: "Edit location",
-        station: station,
+        geocache: geocache,
         location: location,
       };
       return h.view("update-location-view", viewData);
@@ -39,7 +39,7 @@ export const locationController = {
       } catch (error) {
         console.log(error);
       }
-      return h.redirect(`/station/${request.params.id}`);
+      return h.redirect(`/geocache/${request.params.id}`);
     },
   },
 

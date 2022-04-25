@@ -15,14 +15,14 @@ export const adminController = {
         },
     handler: async function (request, h) {
       const users = await db.userStore.getAllUsers();
-      const stations = await db.stationStore.getAllGeocaches();
+      const geocaches = await db.geocacheStore.getAllGeocaches();
       const locations = await db.locationStore.getAllLocations();
       const analytics = await userAnalytics.calculateUserAnalytics();
       const viewData = {
         title: "Application Admin Page",
         user:request.auth.credentials,
         users: users,
-        stations: stations,
+        geocaches: geocaches,
         locations: locations,
         analytics: analytics,
       };

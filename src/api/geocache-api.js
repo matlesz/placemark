@@ -1,13 +1,14 @@
 import Boom from "@hapi/boom";
+import { IdSpec,GeocacheArraySpec,GeocacheSpec,GeocacheSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
-import { IdSpec,GeocacheArraySpec,GeocacheSpec,GeocacheSpecPlus } from "../models/joi-schemas.js";
 
 export const geocacheApi = {
   find: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },
+    handler: async function (request, h) {
       try {
         const geocaches = await db.geocacheStore.getAllGeocaches();
         return geocaches;
@@ -24,7 +25,8 @@ export const geocacheApi = {
   findOne: {
     auth: {
       strategy: "jwt",
-    },    async handler(request) {
+    },
+    async handler(request) {
       try {
         const geocache = await db.geocacheStore.getGeocacheById(request.params.id);
         if (!geocache) {
@@ -45,7 +47,8 @@ export const geocacheApi = {
   create: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },
+    handler: async function (request, h) {
       try{
         const geocache = request.payload;
         const newGeocache= await db.geocacheStore.addGeocache(geocache);
@@ -58,17 +61,18 @@ export const geocacheApi = {
         return Boom.serverUnavailable("Database server error")
       }
     },
-    tags:["api"],
-    response: {schema: GeocacheSpecPlus, failAction:validationError},
+    tags: ["api"],
     description: "Create a geocache",
     notes: "Returns newly created geocache",
-    validate:{ payload: GeocacheSpec, failAction: validationError },
+    validate: { payload: GeocacheSpec, failAction: validationError },
+    response: { schema: GeocacheSpecPlus, failAction:validationError },
   },
 
   deleteOne: {
     auth: {
       strategy: "jwt",
-    },    handler: async function (request, h) {
+    },
+    handler: async function (request, h) {
       try {
         const geocache = await db.geocacheStore.getGeocacheById(request.params.id);
         if (!geocache) {

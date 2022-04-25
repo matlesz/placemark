@@ -1,26 +1,26 @@
 import { assert } from "chai";
 import { geocacheService } from "./geocache-service.js";
 import { decodeToken } from "../../src/api/jwt-utils.js";
-import { maggie,maggieCredentials } from "../fixtures.js";
+import { maggie } from "../fixtures.js";
 
 suite("Authentication API tests", async () => {
   setup(async () => {
     geocacheService.clearAuth();
     await geocacheService.createUser(maggie);
-    await geocacheService.authenticate(maggieCredentials);
+    await geocacheService.authenticate(maggie);
     await geocacheService.deleteAllUsers();
   });
 
   test("authenticate", async () => {
     const returnedUser = await geocacheService.createUser(maggie);
-    const response = await geocacheService.authenticate(maggieCredentials);
+    const response = await geocacheService.authenticate(maggie);
     assert(response.success);
     assert.isDefined(response.token);
   });
 
   test("verify Token", async () => {
     const returnedUser = await geocacheService.createUser(maggie);
-    const response = await geocacheService.authenticate(maggieCredentials);
+    const response = await geocacheService.authenticate(maggie);
 
     const userInfo = decodeToken(response.token);
     assert.equal(userInfo.email, returnedUser.email);

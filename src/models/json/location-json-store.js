@@ -13,18 +13,18 @@ export const locationJsonStore = {
     return db.data.locations;
   },
 
-  async addLocation(stationId, location) {
+  async addLocation(geocacheId, location) {
     await db.read();
     location._id = v4();
-    location.stationid = stationId;
+    location.geocacheid = geocacheId;
     db.data.locations.push(location);
     await db.write();
     return location;
   },
 
-  async getLocationsByStationId(id) {
+  async getLocationsByGeocacheId(id) {
     await db.read()
-    return db.data.locations.filter((location) => location.stationid === id);
+    return db.data.locations.filter((location) => location.geocacheid === id);
   },
 
   async getLocationById(id) {
@@ -32,8 +32,8 @@ export const locationJsonStore = {
     return db.data.locations.find((location) => location._id === id);
   },
 
-  async getStationLocations(stationId) {
-    return locations.filter((location) => location.stationid === stationId);
+  async getGeocacheLocations(geocacheId) {
+    return locations.filter((location) => location.geocacheid === geocacheId);
   },
 
   async deleteLocation(id) {

@@ -52,9 +52,9 @@ export const testGeocaches = [
   }
 ];
 
-export const countyName = {
-  name: "Dublin"
-};
+//export const countyName = {
+//  name: "Dublin"
+//};
 
 export const locationArea = {
   "name": "Moai",
