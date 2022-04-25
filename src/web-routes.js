@@ -7,7 +7,6 @@ import { adminController } from "./controllers/admin-access-controller.js";
 
 
 export const webRoutes = [
-  { method: "GET", path: "/about", config: aboutController.index },
   { method: "GET", path: "/", config: accountsController.index },
   { method: "GET", path: "/signup", config: accountsController.showSignup },
   { method: "GET", path: "/login", config: accountsController.showLogin },
@@ -17,7 +16,7 @@ export const webRoutes = [
   //{ method: "GET", path: "/user-account", config: accountsController.loggedInUserDetails },
   //{ method: "POST", path: "/updateUserDetails", config: accountsController.updateLoggedInUser },
   //{ method: "GET", path: "/deleteUserAccount", config: accountsController.deleteUserAccount },
-
+  { method: "GET", path: "/about", config: aboutController.index },
 
   { method: "GET", path: "/admin-access", config: adminController.index},
   { method: "GET", path: "/admin-access/deleteUser/{id}", config: adminController.deleteUser },
