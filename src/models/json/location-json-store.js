@@ -3,7 +3,7 @@ import { v4 } from "uuid";
 import { JSONFile,Low } from "lowdb";
 
 const db = new Low(new JSONFile("./src/models/json/locations.json"));
-db.data={locations:[]}
+db.data={ locations :[]}
 
 
 

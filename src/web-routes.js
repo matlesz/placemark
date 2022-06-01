@@ -4,6 +4,7 @@ import { aboutController } from "./controllers/about-controller.js";
 import { geocacheController } from "./controllers/geocache-controller.js";
 import { locationController } from "./controllers/location-controller.js";
 import { adminController } from "./controllers/admin-access-controller.js";
+import {reviewsController} from "./controllers/reviews-controller.js";
 
 
 export const webRoutes = [
@@ -33,6 +34,8 @@ export const webRoutes = [
   { method: "GET", path: "/geocache/{id}/location/{locationid}", config: locationController.showLocationView },
   { method: "POST", path: "/geocache/{id}/location/{locationid}", config: locationController.update },
 
+  { method: "GET", path: "/reviews", config: reviewsController.index },
+  { method: "POST", path: "/reviews/addReview", config: reviewsController.addReview },
 
   // to handle images in public folder..uses npm inert plugin
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }

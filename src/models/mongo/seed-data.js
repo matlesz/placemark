@@ -73,5 +73,27 @@ export const seedData = {
       size: "micro",
       geocacheid: "->geocaches.county_3",
     },
+
+    reviews: {
+      _model: "Reivew",
+      review_1: {
+        title: "Loong Avenues review",
+        date: "01.02.2022",
+        body: "this was great find in magical place.",
+        geocacheid: "->geocaches.county_1",
+      },
+      review_2: {
+        title: "No Roulette Here review",
+        date: "22.06.2022",
+        body: "I almost give up. it was hard to spot.",
+        geocacheid: "->geocaches.county_2",
+      },
+      review_3: {
+        title: "Irish Moai review",
+        date: "15.04.2022",
+        body: "It's like I was there.",
+        geocacheid: "->geocaches.county_3",
+      },
+    }
   },
 };

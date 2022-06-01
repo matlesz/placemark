@@ -55,6 +55,22 @@ export const GeocacheSpecPlus = GeocacheSpec.keys({
 
 export const GeocacheArraySpec = Joi.array().items(GeocacheSpecPlus).label("GeocacheArray");
 
+export const ReviewSpec = Joi.object()
+    .keys({
+        title: Joi.string().required().example("Loong Avenue review."),
+        date: Joi.date().example("01.01.2022").required(),
+        body: Joi.string().example("Very good geocache").required(),
+        geocacheid: IdSpec,
+    })
+    .label("Review");
+
+export const ReviewSpecPlus = ReviewSpec.keys({
+    _id: IdSpec,
+    __v: Joi.number(),
+}).label("ReviewPlus");
+
+export const ReviewArraySpec = Joi.array().items(ReviewSpecPlus).label("ReviewArray");
+
 export const JwtAuth = Joi.object()
     .keys({
         success: Joi.boolean().example("true").required(),
