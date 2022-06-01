@@ -23,7 +23,7 @@ export const reviewsController = {
                 date: date,
                 body: request.payload.body
             };
-            await db.reviewStore.addReview(location._id, newReviews);
+            await db.reviewStore.addReview(geocache._id, newReviews);
             return h.redirect(`/reviews/addReview`);
         }
     }

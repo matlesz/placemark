@@ -13,7 +13,7 @@ export const reviewMongoStore = {
     },
 
 
-    async addGeocache(review) {
+    async addReview(review) {
         const newReview = new Review(review);
         const reviewObj = await newReview.save();
         return this.getReviewById(reviewObj._id);

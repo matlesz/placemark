@@ -75,7 +75,7 @@ export const seedData = {
     },
 
     reviews: {
-      _model: "Reivew",
+      _model: "Review",
       review_1: {
         title: "Loong Avenues review",
         date: "01.02.2022",
