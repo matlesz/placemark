@@ -7,7 +7,7 @@ const locationSchema = new Schema({
   latitude: Number,
   longitude: Number,
   category:String,
-  description:String,
+  size:String,
   geocacheid: {
     type: Schema.Types.ObjectId,
     ref: "Geocache",

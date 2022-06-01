@@ -49,7 +49,7 @@ export const locationMongoStore = {
     location.latitude = updatedLocation.latitude;
     location.longitude = updatedLocation.longitude;
     location.category= updatedLocation.category;
-    location.description= updatedLocation.description;
+    location.size= updatedLocation.size;
     await location.save();
   },
 

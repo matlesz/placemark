@@ -32,7 +32,7 @@ export const locationController = {
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
         category: request.payload.category,
-        description: request.payload.description,
+        size: request.payload.size,
       };
       try {
         await db.locationStore.updateLocation(request.params.locationid, newLocation);

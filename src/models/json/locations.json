@@ -1,11 +1,11 @@
 {
   "locations": [
     {
-      "name": "Loong Avenus",
+      "name": "Loong Avenues",
       "latitude": 5322.401,
       "longitude": 614.469,
       "category": "Traditional",
-      "size": "micro",
+      "size": "Micro",
       "_id": "2c4b12ed-1850-450d-a117-15014d78b75c",
       "geocacheid": "175f712c-2f4d-45a5-ae07-df439ac479d9"
     },
@@ -14,7 +14,7 @@
       "latitude": 5322.337,
       "longitude": 613.419,
       "category": "Traditional",
-      "size": "micro",
+      "size": "Micro",
       "_id": "3ab03d7c-5dd6-4ad0-819f-d242465d5cd8",
       "geocacheid": "06a233b4-e024-4297-ab44-520470bea89a"
     }

@@ -55,7 +55,6 @@ export const seedData = {
       longitude: 614.469,
       category: "Traditional",
       size: "micro",
-      description: "On-street Parking",
       geocacheid: "->geocaches.county_1",
     },
     location_2: {

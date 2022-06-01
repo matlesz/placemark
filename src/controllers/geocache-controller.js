@@ -30,7 +30,7 @@ export const geocacheController = {
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
         category:request.payload.category,
-        description:request.payload.description,
+        size:request.payload.size,
       };
       await db.locationStore.addLocation(geocache._id, newLocation);
       return h.redirect(`/geocache/${geocache._id}`);
