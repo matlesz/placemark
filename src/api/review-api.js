@@ -1,9 +1,9 @@
 import Boom from "@hapi/boom";
-import { IdSpec,GeocacheArraySpec,GeocacheSpec,GeocacheSpecPlus } from "../models/joi-schemas.js";
+import { IdSpec,ReviewArraySpec,ReviewSpec,ReviewSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
 
-export const geocacheApi = {
+export const reviewApi = {
     find: {
         auth: {
             strategy: "jwt",

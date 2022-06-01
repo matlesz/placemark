@@ -1,10 +1,5 @@
-<form action="/reviews/addreview" method="post">
-    <article class="media">
-        <figure class="media-left">
-            <p class="image is 64x64">
-                <img src="https://bulma.io/images/placeholders/128x128.png">
-            </p>
-        </figure>
+<form action="/dashboard/addReview" method="post">
+    <div class="media">
         <div class="media-content">
             <p class="control">
                 <label class="label">Title</label> <input class="input" type="text" placeholder="Title" name="title">
@@ -12,10 +7,6 @@
                 <label class="label">Review</label><textarea class="textarea" placeholder="Add a review.." name="body"></textarea>
             </p>
         </div>
-        <div class="field">
-            <p class="control">
-                <button class="button">Post reivew</button>
-            </p>
-        </div>
-    </article>
+    </div>
+    <button class="button is-primary">Add Review</button>
 </form>

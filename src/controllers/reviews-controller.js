@@ -1,12 +1,13 @@
-import { db } from "..models/db.js";
+import {ReviewSpec} from "../models/joi-schemas.js";
+import { db } from "../models/db.js";
 
 export const reviewsController = {
     index: {
         handler: async function (request, h) {
-            const comment = await db.reviewStore.getAllComments();
+            const review = await db.reviewStore.getAllReviews();
             const viewData = {
-                title: "Comments",
-                comment: comment
+                title: "Reviews",
+                review: review
             };
 
             return h.redirect(`/reviews` , viewData);

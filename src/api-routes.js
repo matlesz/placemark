@@ -1,6 +1,7 @@
 import { userApi } from "./api/user-api.js";
 import { geocacheApi } from "./api/geocache-api.js";
-import { locationApi } from "./api/location-api.js"
+import { locationApi } from "./api/location-api.js";
+import { reviewApi } from "./api/review-api.js"
 
 
 
@@ -27,4 +28,10 @@ export const apiRoutes= [
   { method: "POST", path: "/api/geocaches/{id}/locations", config: locationApi.create },
   { method: "DELETE", path: "/api/locations", config: locationApi.deleteAll },
   { method: "DELETE", path: "/api/locations/{id}", config: locationApi.deleteOne },
+
+  { method: "GET", path: "/api/reviews", config: reviewApi.find },
+  { method: "GET", path: "/api/reviews/{id}", config: reviewApi.findOne },
+  { method: "POST", path: "/api/reviews", config: reviewApi.create },
+  { method: "DELETE", path: "/api/reviews", config: reviewApi.deleteAll },
+  { method: "DELETE", path: "/api/reviews/{id}", config: reviewApi.deleteOne },
 ]
