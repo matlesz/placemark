@@ -12,10 +12,6 @@ export const reviewJsonStore = {
         return db.data.reviews;
     },
 
-    async getUserReviews(userid) {
-        await db.read();
-        return db.data.reviews.filter((review) => review.userid === userid);
-    },
 
     async addReview(review) {
         review._id = v4();
