@@ -9,7 +9,7 @@ export const reviewsController = {
                 title: "Reviews",
                 review: review
             };
-            return h.redirect(`/reviews` , viewData);
+            return h.redirect(`/dashboard` , viewData);
         },
     },
 
@@ -22,8 +22,8 @@ export const reviewsController = {
                 date: date,
                 body: request.payload.body
             };
-            await db.reviewStore.addReview(request.params.id, newReviews);
-            return h.redirect(`/reviews/addReview`);
+            await db.reviewStore.addReview(newReviews);
+            return h.redirect(`/dashboard`);
         }
     }
 };

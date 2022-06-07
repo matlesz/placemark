@@ -4,7 +4,7 @@ const { Schema } = Mongoose;
 
 const reviewSchema = new Schema({
     title: String,
-    date: Number,
+    date: Date,
     body: String,
 });
 

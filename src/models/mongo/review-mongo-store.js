@@ -12,6 +12,10 @@ export const reviewMongoStore = {
         return reviews.title;
     },
 
+    async getReviewById(id) {
+        const review = await Review.findById(id).lean();
+        return review;
+    },
 
     async addReview(review) {
         const newReview = new Review(review);

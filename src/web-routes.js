@@ -35,7 +35,7 @@ export const webRoutes = [
   { method: "POST", path: "/geocache/{id}/location/{locationid}", config: locationController.update },
 
   { method: "GET", path: "/reviews", config: reviewsController.index },
-  { method: "POST", path: "/reviews/addReview", config: reviewsController.addReview },
+  { method: "POST", path: "/dashboard", config: reviewsController.addReview },
 
   // to handle images in public folder..uses npm inert plugin
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
