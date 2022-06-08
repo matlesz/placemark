@@ -6,9 +6,11 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const geocaches = await db.geocacheStore.getUserGeocaches(loggedInUser._id);
+      const reviews = await db.reviewStore.getAllReviews();
       const viewData = {
         name: "geocache Dashboard",
         geocaches: geocaches,
+        reviews,
       };
       return h.view("dashboard-view", viewData);
     },
