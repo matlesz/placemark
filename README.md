@@ -19,10 +19,11 @@
 - Bulma
 - Fontawesome
 - Swagger
+- hashing/salting passwords
+- reveiews 
 
 ---
 
 ## Website URLs
 
-[Heroku URL](https://ancient-shelf-40882.herokuapp.com//) Currently not working
-
+Heroku URL: https://ancient-shelf-40882.herokuapp.com/
